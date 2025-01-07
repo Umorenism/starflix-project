@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import pics from "../asset/loggg.png";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -151,6 +152,13 @@ const Login = () => {
             >
               Login
             </button>
+
+            <p className="text-center mt-2">
+              Don't have an account?
+              <Link to="/signup">
+                <span className="text-red-700 underline">Sign Up</span>
+              </Link>
+            </p>
           </div>
         </form>
       </div>

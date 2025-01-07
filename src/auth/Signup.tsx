@@ -30,7 +30,7 @@ const Signup = () => {
       if (response.status === 200) {
         // You can store the token if required (e.g., in localStorage)
         localStorage.setItem("authToken", response.data.token);
-        navigate("/dashboard"); // Redirect to the dashboard or another route
+        navigate("/otp"); // Redirect to the dashboard or another route
       }
     } catch (error: unknown) {
       if (axios.isAxiosError(error)) {
@@ -113,13 +113,15 @@ const Signup = () => {
           </p>
           {/* Submit Button */}
           <div>
-            <button
-              type="submit"
-              className="w-full py-3 font-semibold rounded-md bg-pink-500 text-white focus:outline-none disabled:bg-gray-300"
-              disabled={loading}
-            >
-              {loading ? "request code..." : "Referral code"}
-            </button>
+            <Link to="/otp">
+              <button
+                type="submit"
+                className="w-full py-3 font-semibold rounded-md bg-pink-500 text-white focus:outline-none disabled:bg-gray-300"
+                disabled={loading}
+              >
+                {loading ? "request code..." : "Referral code"}
+              </button>
+            </Link>
           </div>
         </form>
 

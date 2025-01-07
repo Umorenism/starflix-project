@@ -15,6 +15,7 @@ import Login from "./auth/Login.tsx";
 import ProfileCard from "./component/pages/ProfilePage.tsx";
 import ChatBox from "./component/pages/chatBox.tsx";
 import Signup from "./auth/Signup.tsx";
+import OtpVerify from "./auth/Otp.tsx";
 // import CreatePage from "./component/pages/CreatePage.tsx";
 
 // Pages
@@ -47,6 +48,14 @@ const router = createBrowserRouter([
         element: (
           <>
             <Signup />
+          </>
+        ),
+      },
+      {
+        path: "/otp",
+        element: (
+          <>
+            <OtpVerify />
           </>
         ),
       },

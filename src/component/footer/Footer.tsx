@@ -59,7 +59,7 @@ export const Footer = () => {
   return (
     <>
       {/* Footer Section */}
-      <div className="py-2 bg-gray-800 fixed bottom-0 left-0 right-0 z-10">
+      <div className="py-2 bg-slate-300 fixed bottom-0 left-0 right-0 z-10 border-t-4 rounded-md">
         <div className="flex justify-between items-center px-6 gap-4">
           {footerItems.map((item, index) => (
             <div key={index} className="text-white flex flex-col items-center">
@@ -69,8 +69,12 @@ export const Footer = () => {
                   item.title === "Create" ? handleModalToggle : undefined
                 }
               >
-                <div className="text-xl mb-1 text-[#1DD55E]">{item.icon}</div>
-                <p className="text-sm">{item.title}</p>
+                <div className="text-xl hover:text-pink-600 mb-1 text-slate-700">
+                  {item.icon}
+                </div>
+                <p className="text-sm hover:text-pink-600 text-black">
+                  {item.title}
+                </p>
               </Link>
             </div>
           ))}

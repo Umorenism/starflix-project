@@ -1,5 +1,6 @@
 import { FaArrowLeft, FaBell } from "react-icons/fa";
 import pics from "../../asset/loggg.png";
+import pics1 from "../../asset/images/coins/red-coin.webp";
 
 interface NabarProps {
   title: string;
@@ -19,7 +20,7 @@ const Navbar = ({ title }: NabarProps) => {
         <div className="flex items-center space-x-4">
           {/* Replace with actual image sources */}
           <img src={pics} alt="icon 1" className="w-6 h-6" />
-          <img src={pics} alt="icon 2" className="w-6 h-6" />
+          <img src={pics1} alt="icon 2" className="w-6 h-6" />
           <div className="relative">
             <p className="absolute h-5 w-5 rounded-full bg-red-600 text-sm right-0">
               76

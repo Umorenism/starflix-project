@@ -12,9 +12,9 @@ const footerItems = [
     path: "/",
   },
   {
-    title: "Connect",
+    title: "Marketplace",
     icon: <SiCoinmarketcap />,
-    path: "/connect",
+    path: "/marketplace",
   },
   {
     title: "Create",

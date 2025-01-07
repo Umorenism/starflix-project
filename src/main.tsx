@@ -5,7 +5,7 @@ import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext.tsx";
 import FeedPage from "./component/pages/FeedPage.tsx";
-import ConnectPage from "./component/pages/ConnectPage.tsx";
+import MarketPlace from "./component/pages/MarketPlace.tsx";
 // import CreatePage from "./component/pages/CreatePage.tsx";
 import Navbar from "./component/Header/Navbar.tsx";
 import { Footer } from "./component/footer/Footer.tsx";
@@ -52,11 +52,11 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/connect",
+        path: "/marketplace",
         element: (
           <>
-            <Navbar title="Connect" />
-            <ConnectPage />
+            <Navbar title="Market place" />
+            <MarketPlace />
             <Footer />
           </>
         ),

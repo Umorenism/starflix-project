@@ -1,4 +1,5 @@
-import { FaArrowLeft, FaBell } from "react-icons/fa";
+import { FaArrowLeft } from "react-icons/fa";
+import { LiaEnvelopeOpenTextSolid } from "react-icons/lia";
 import pics from "../../asset/loggg.png";
 import pics1 from "../../asset/images/coins/red-coin.webp";
 
@@ -17,15 +18,15 @@ const Navbar = ({ title }: NabarProps) => {
         </div>
 
         {/* Menu Icons */}
-        <div className="flex items-center space-x-4">
+        <div className="flex justify-center items-center space-x-4">
           {/* Replace with actual image sources */}
-          <img src={pics} alt="icon 1" className="w-6 h-6" />
-          <img src={pics1} alt="icon 2" className="w-6 h-6" />
+          <img src={pics} alt="icon 1" className="w-8 h-8" />
+          <img src={pics1} alt="icon 2" className="w-8 h-8" />
           <div className="relative">
             <p className="absolute h-5 w-5 rounded-full bg-red-600 text-sm right-0">
               76
             </p>
-            <FaBell size={30} />
+            <LiaEnvelopeOpenTextSolid size={30} />
           </div>
         </div>
       </div>

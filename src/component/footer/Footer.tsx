@@ -1,33 +1,36 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { SiCoinmarketcap } from "react-icons/si";
-import { FaWallet, FaHome } from "react-icons/fa";
-import { PiTrademarkFill } from "react-icons/pi";
+
+import { CgProfile } from "react-icons/cg";
+import { FaCirclePlus } from "react-icons/fa6";
+import { BsChatFill } from "react-icons/bs";
+import { MdOutlineDynamicFeed } from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
+import { MdOutlineCreateNewFolder } from "react-icons/md";
 
 const footerItems = [
   {
     title: "Feeds",
-    icon: <FaHome />,
+    icon: <MdOutlineDynamicFeed />,
     path: "/",
   },
   {
     title: "Marketplace",
-    icon: <SiCoinmarketcap />,
+    icon: <FaCirclePlus />,
     path: "/marketplace",
   },
   {
     title: "Create",
-    icon: <PiTrademarkFill />,
+    icon: <MdOutlineCreateNewFolder />,
   },
   {
     title: "Chat",
-    icon: <FaWallet />,
+    icon: <BsChatFill />,
     path: "/chat",
   },
   {
     title: "Profile",
-    icon: <FaWallet />,
+    icon: <CgProfile />,
     path: "/profile",
   },
 ];

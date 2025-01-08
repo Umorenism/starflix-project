@@ -7,7 +7,7 @@ import avatar2 from "../asset/images/avatar/2.jpg";
 import avatar3 from "../asset/images/avatar/3.jpg";
 import avatar4 from "../asset/images/avatar/4.jpg";
 import avatar5 from "../asset/images/avatar/5.jpg";
-import coin from "../asset/images/w3badoo/icon/coin.png";
+// import coin from "../asset/images/coins/red-coin.webp";
 interface ScrollVideoProps {
   src: string;
   thumbnail: string;
@@ -223,7 +223,7 @@ const Reels: React.FC = () => {
           {isLoading ? (
             <div className="text-center">Loading...</div>
           ) : currentTab === "feeds" ? (
-            <div className="grid sm:grid-cols-1 grid-cols-1 md:grid-cols-1 gap-6 mb-8">
+            <div className="grid grid-cols-1  md:grid-cols-2 gap-6 mb-8 ">
               {posts.map((post) => (
                 <div
                   key={post._id}
@@ -282,23 +282,65 @@ const Reels: React.FC = () => {
               ))}
             </div>
           ) : (
-            <div className="grid grid-cols-2 gap-6 md:grid-cols-4">
+            // <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            //   {movies.map((movie) => (
+            //     <div
+            //       key={movie.id}
+            //       className="bg-white border rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200"
+            //     >
+            //       <img
+            //         src={movie.poster}
+            //         alt={movie.title}
+            //         className="w-full h-48 object-cover rounded-t-lg"
+            //       />
+            //       <div className="p-4">
+            //         <h3 className="text-lg font-semibold">{movie.title}</h3>
+            //         <p className="text-gray-500">{movie.duration}</p>
+            //         <div className="flex items-center gap-2 mt-2">
+            //           <img src={coin} alt="Coin" className="w-4 h-4" />
+            //           <span className="text-sm">{movie.coin}</span>
+            //         </div>
+            //       </div>
+            //     </div>
+            //   ))}
+            // </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
               {movies.map((movie) => (
                 <div
                   key={movie.id}
-                  className="bg-white border rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200"
+                  className="rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
                 >
-                  <img
-                    src={movie.poster}
-                    alt={movie.title}
-                    className="w-full h-48 object-cover rounded-t-lg"
-                  />
-                  <div className="p-4">
-                    <h3 className="text-lg font-semibold">{movie.title}</h3>
-                    <p className="text-gray-500">{movie.duration}</p>
-                    <div className="flex items-center gap-2 mt-2">
-                      <img src={coin} alt="Coin" className="w-4 h-4" />
-                      <span className="text-sm">{movie.coin}</span>
+                  {/* Movie Thumbnail with Duration */}
+                  <div className="aspect-[2/3] relative">
+                    <img
+                      src={movie.poster}
+                      alt={movie.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-2 right-2 bg-black bg-opacity-70 text-white text-xs px-2 py-1 rounded">
+                      {movie.duration}
+                    </div>
+                  </div>
+
+                  {/* Movie Info */}
+                  <div className="p-4 bg-white">
+                    <h3 className="font-semibold text-lg text-gray-800 mb-2">
+                      {movie.title}
+                    </h3>
+                    <div className="flex justify-between items-center">
+                      {/* Coin Amount */}
+                      <div className="text-gray-600 text-sm flex items-center gap-1">
+                        <span>Earn {movie.coin} STAR</span>
+                      </div>
+
+                      {/* Watch Now Button */}
+                      <button
+                        // onClick={() => handleWatchNow(movie.id)}
+                        className="bg-pink-500 text-white text-sm px-3 py-1 rounded hover:bg-pink-600"
+                      >
+                        Watch Now
+                      </button>
                     </div>
                   </div>
                 </div>

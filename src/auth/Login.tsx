@@ -40,7 +40,7 @@ const Login = () => {
     if (!isValid) return;
 
     try {
-      const response = await fetch("", {
+      const response = await fetch("https://starfaceapi.site/api/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

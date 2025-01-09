@@ -301,7 +301,7 @@ function MarketPlace() {
                       className="border rounded-lg p-4 hover:shadow-md transition-shadow"
                     >
                       <div className="flex justify-between items-start mb-2">
-                        <h3 className="font-semibold text-gray-800">
+                        <h3 className="font-semibold text-3xl text-gray-800">
                           {task.adType}
                         </h3>
                         <div className="flex gap-2">
@@ -318,7 +318,7 @@ function MarketPlace() {
                         <p></p>
                         <button
                           onClick={() => setSelectedTask(task)} // Set the selected task
-                          className="bg-blue-500 py-2 rounded-md px-10"
+                          className="bg-pink-600 text-xl text-white font-bold py-2 rounded-md mt-4 px-10"
                         >
                           Check task
                         </button>

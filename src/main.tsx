@@ -18,6 +18,8 @@ import Signup from "./auth/Signup.tsx";
 import OtpVerify from "./auth/Otp.tsx";
 import PerformedTasks from "./component/PerformTask.tsx";
 import TaskDetailPage from "./component/TaskDetailPage.tsx";
+import Wallet from "./component/pages/Wallet.tsx";
+import Invite from "./component/pages/Invite.tsx";
 // import CreatePage from "./component/pages/CreatePage.tsx";
 
 // Pages
@@ -99,16 +101,26 @@ const router = createBrowserRouter([
           </>
         ),
       },
-      // {
-      //   path: "/create",
-      //   element: (
-      //     <>
-      //       <Navbar title="Create" />
-      //       <CreatePage />
-      //       <Footer />
-      //     </>
-      //   ),
-      // },
+      {
+        path: "/wallet",
+        element: (
+          <>
+            <Navbar title="Wellet" />
+            <Wallet />
+            <Footer />
+          </>
+        ),
+      },
+      {
+        path: "/invite",
+        element: (
+          <>
+            <Navbar title="Invite" />
+            <Invite />
+            <Footer />
+          </>
+        ),
+      },
       {
         path: "/chat",
         element: (

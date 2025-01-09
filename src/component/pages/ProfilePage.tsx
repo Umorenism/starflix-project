@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FaEdit } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const ProfileCard = () => {
   const [profileImage, setProfileImage] = useState<string | null>(null);
@@ -114,15 +115,21 @@ const ProfileCard = () => {
           </div>
         </div>
         <div className="flex w-full mt-4 gap-2">
-          <button className="bg-pink-500 text-white flex-1 py-2 rounded-md text-sm">
-            My Wallet
-          </button>
-          <button className="bg-pink-500 text-white flex-1 py-2 rounded-md text-sm">
-            My Wallet
-          </button>
-          <button className="bg-pink-500 text-white flex-1 py-2 rounded-md text-sm">
-            My Wallet
-          </button>
+          <Link to="/wallet" className="w-full">
+            <button className="bg-pink-500 w-full text-white flex-1 py-2 rounded-md text-sm">
+              My Wallet
+            </button>
+          </Link>
+          <Link to="/invite" className="w-full">
+            <button className="bg-pink-500 w-full text-white flex-1 py-2 rounded-md text-sm">
+              Invite friends
+            </button>
+          </Link>
+          <Link to="/wallet" className="w-full">
+            <button className="bg-pink-500 w-full text-white flex-1 py-2 rounded-md text-sm">
+              Trade starface
+            </button>
+          </Link>
         </div>
       </div>
 

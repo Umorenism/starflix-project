@@ -2,10 +2,14 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 interface CampaignType {
-  name: string;
+  adType: string;
   description: string;
-  image: string;
-  link: string;
+  completedCount: number;
+  createdAt: number;
+  pricePerAction: number;
+  targetCount: number;
+  taskUrl: string;
+  status: string;
 }
 
 interface TaskTitleProps {
@@ -28,7 +32,7 @@ const TaskDetailPage: React.FC<TaskTitleProps> = ({ tasktitle }) => {
 
         if (response.data && Array.isArray(response.data.campaigns)) {
           setTaskList(response.data.campaigns);
-          console.log(response.data.campaigns);
+          console.log("Fetched campaigns:", response.data.campaigns); // Debugging
         } else {
           setError("Unexpected response format from API.");
         }
@@ -65,20 +69,29 @@ const TaskDetailPage: React.FC<TaskTitleProps> = ({ tasktitle }) => {
             key={index}
             className="bg-white p-4 rounded-lg shadow-md hover:shadow-lg transition"
           >
-            <img
-              src={task.image}
-              alt={task.name}
-              className="w-full h-40 object-cover rounded-lg mb-4"
-            />
-            <h3 className="text-xl font-semibold text-gray-800">{task.name}</h3>
-            <p className="text-gray-600 mt-2">{task.description}</p>
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-4xl font-semibold text-gray-800">
+                {task.adType}
+              </h3>
+
+              <p className="bg-green-100 py-2 px-2 rounded-md">
+                ${task.pricePerAction} per task
+              </p>
+              <span></span>
+            </div>
+            <p className="text-gray-600 mt-2 text-xl">{task.description}</p>
+            <p className="text-gray-600 mt-4 text-xl">
+              {task.createdAt
+                ? new Date(task.createdAt).toLocaleDateString()
+                : "Date not available"}
+            </p>
             <a
-              href={task.link}
+              href={task.taskUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-4 inline-block text-blue-500 hover:underline"
+              className="mt-4 bg-pink-600 py-2 px-2 rounded-md text-white  inline-block font-bold hover:underline"
             >
-              Go to Task
+              Perform Task
             </a>
           </div>
         ))}

@@ -20,6 +20,7 @@ import PerformedTasks from "./component/PerformTask.tsx";
 import TaskDetailPage from "./component/TaskDetailPage.tsx";
 import Wallet from "./component/pages/Wallet.tsx";
 import Invite from "./component/pages/Invite.tsx";
+import EditProfile from "./component/pages/EditProfile.tsx";
 // import CreatePage from "./component/pages/CreatePage.tsx";
 
 // Pages
@@ -117,6 +118,16 @@ const router = createBrowserRouter([
           <>
             <Navbar title="Invite" />
             <Invite />
+            <Footer />
+          </>
+        ),
+      },
+      {
+        path: "/editprofile",
+        element: (
+          <>
+            <Navbar title="Edit profile" />
+            <EditProfile />
             <Footer />
           </>
         ),

@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { FaEdit } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ProfileCard = () => {
   const [profileImage, setProfileImage] = useState<string | null>(null);
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<string>("all");
+  const [loading, setLoading] = useState<boolean>(false); // Loading state
 
   const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
@@ -13,14 +15,22 @@ const ProfileCard = () => {
     }
   };
 
+  const handleEditClick = () => {
+    setLoading(true); // Start loading
+    setTimeout(() => {
+      setLoading(false); // Stop loading after delay (simulate async operation)
+      navigate("/editprofile"); // Navigate to the edit profile page
+    }, 2000); // 2-second delay for demonstration
+  };
+
   const handleLogout = () => {
     alert("You have been logged out.");
     // Add your logout logic here
   };
 
-  const posts = Array(12).fill("Post"); // Placeholder for "All posts"
-  const photos = Array(8).fill("Photo"); // Placeholder for "Photos"
-  const videos = Array(6).fill("Video"); // Placeholder for "Videos"
+  const posts = Array(8).fill("Post"); // Placeholder for "All posts"
+  const photos = Array(5).fill("Photo"); // Placeholder for "Photos"
+  const videos = Array(5).fill("Video"); // Placeholder for "Videos"
 
   const renderContent = () => {
     let content = [];
@@ -29,11 +39,11 @@ const ProfileCard = () => {
     else if (activeTab === "videos") content = videos;
 
     return (
-      <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 mt-4 py-4 p-4">
+      <div className="grid grid-cols-3 gap-4 sm:grid-cols-4 mt-4 py-6 p-4">
         {content.map((item, index) => (
           <div
             key={index}
-            className="bg-slate-200 rounded-md p-4 text-center text-sm"
+            className="bg-slate-200 py-6 rounded-md p-4 text-center text-sm"
           >
             {item} {index + 1}
           </div>
@@ -43,7 +53,7 @@ const ProfileCard = () => {
   };
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-gray-100">
+    <div className="flex flex-col items-center min-h-screen bg-gray-100 p-4">
       <div className="relative bg-white shadow-lg rounded-lg w-[95%] mt-20 p-6">
         {/* Logout Button */}
         <button
@@ -93,7 +103,17 @@ const ProfileCard = () => {
           <h2 className="mt-4 text-lg font-bold text-gray-700">John Doe</h2>
           <p className="text-gray-600 text-sm flex items-center justify-center">
             johndoes<span className="text-xs ml-1">@example.com</span>
-            <FaEdit size={16} className="text-red-700 ml-2" />
+            <button
+              onClick={handleEditClick}
+              disabled={loading}
+              className="ml-2 flex items-center"
+            >
+              {loading ? (
+                <div className="animate-spin h-5 w-5 border-t-2 border-red-700 rounded-full"></div>
+              ) : (
+                <FaEdit size={16} className="text-red-700" />
+              )}
+            </button>
           </p>
           <p className="text-gray-500 text-sm">johndoe@gmail.com</p>
           <h1 className="mt-2 text-gray-700 text-sm">
@@ -104,14 +124,14 @@ const ProfileCard = () => {
           </h1>
         </div>
         <div className="flex w-full mt-4 gap-2">
-          <div className="bg-slate-100 flex-1 py-2 rounded-md text-center text-sm">
-            0 Likes
+          <div className="bg-slate-100 flex-1 py-4 rounded-md text-center text-sm">
+            10 Likes
           </div>
-          <div className="bg-slate-100 flex-1 py-2 rounded-md text-center text-sm">
-            0 Following
+          <div className="bg-slate-100 flex-1 py-4 rounded-md text-center text-sm">
+            1 Following
           </div>
-          <div className="bg-slate-100 flex-1 py-2 rounded-md text-center text-sm">
-            0 Followers
+          <div className="bg-slate-100 flex-1 py-4 rounded-md text-center text-sm">
+            19 Followers
           </div>
         </div>
         <div className="flex w-full mt-4 gap-2">
@@ -137,7 +157,7 @@ const ProfileCard = () => {
       </div>
 
       {/* Tab Buttons */}
-      <div className="w-full bg-white shadow-md mt-4">
+      <div className="w-full  mt-4">
         <div className="flex justify-around">
           {["all", "photos", "videos"].map((tab) => (
             <button
@@ -158,7 +178,7 @@ const ProfileCard = () => {
       </div>
 
       {/* Tab Content */}
-      <div className="w-full px-4">{renderContent()}</div>
+      <div className="w-full px-4 ">{renderContent()}</div>
     </div>
   );
 };

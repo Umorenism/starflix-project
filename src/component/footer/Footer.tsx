@@ -40,6 +40,9 @@ export const Footer = () => {
   const [showVideoModal, setShowVideoModal] = useState(false); // State for video modal
   const [showImageModal, setShowImageModal] = useState(false); // State for video modal
   const location = useLocation();
+  const [videoFile, setVideoFile] = useState<File | null>(null); // Track uploaded video
+  const [error, setError] = useState<string>(""); // Track errors (if any)
+  const [imageFile, setImageFile] = useState<File | null>(null); // Track uploaded image
 
   useEffect(() => {
     if (location.pathname === "") {
@@ -56,6 +59,52 @@ export const Footer = () => {
       setShowModal(false);
       setShowVideoModal(false); // Close video modal
       setShowImageModal(false); // Close video modal
+    }
+  };
+
+  // video logic
+  const handleVideoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files ? e.target.files[0] : null;
+    if (file) {
+      setVideoFile(file);
+      setError(""); // Clear previous errors
+    }
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    const file = e.dataTransfer.files ? e.dataTransfer.files[0] : null;
+    if (file && file.type.startsWith("video")) {
+      setVideoFile(file);
+      setError(""); // Clear any previous errors
+    } else {
+      setError("Please upload a valid video file.");
+    }
+  };
+
+  const handleSubmit = () => {
+    if (!videoFile) {
+      setError("Please upload a video before submitting.");
+      return;
+    }
+    console.log("Video uploaded:", videoFile);
+  };
+
+  // image
+
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files ? e.target.files[0] : null;
+    if (file) {
+      if (file.type.startsWith("image")) {
+        setImageFile(file);
+        setError(""); // Clear any previous errors
+      } else {
+        setError("Please upload a valid image file.");
+      }
     }
   };
 
@@ -165,9 +214,28 @@ export const Footer = () => {
                   Close
                 </p>
               </div>
-              <div className="border py-10 mb-4 rounded-md text-center">
+              <div
+                className="border py-10 mb-4 rounded-md text-center"
+                onDragOver={handleDragOver}
+                onDrop={handleDrop}
+              >
                 <h1>Upload video or drag and drop</h1>
+                <input
+                  type="file"
+                  accept="video/*"
+                  onChange={handleVideoUpload}
+                  className="hidden"
+                  id="video-upload"
+                />
+                <label
+                  htmlFor="video-upload"
+                  className="cursor-pointer text-blue-500"
+                >
+                  Choose File
+                </label>
               </div>
+              {videoFile && <p className="text-green-500">{videoFile.name}</p>}
+              {error && <p className="text-red-500">{error}</p>}
               <div>
                 <div className="mb-5">
                   <h3 className="mb-1">Title</h3>
@@ -185,13 +253,17 @@ export const Footer = () => {
                   />
                 </div>
               </div>
-              <button className="bg-pink-400 py-2 w-full mt-4 rounded-md">
+              <button
+                className="bg-pink-400 py-2 w-full mt-4 rounded-md"
+                onClick={handleSubmit}
+              >
                 Upload this video
               </button>
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
+
       <AnimatePresence>
         {showImageModal && (
           <motion.div
@@ -220,8 +292,32 @@ export const Footer = () => {
                   Close
                 </p>
               </div>
-              <div className="border py-10 mb-4 rounded-md text-center">
+              <div
+                onDrop={handleDrop}
+                onDragOver={handleDragOver}
+                className="border py-10 mb-4 rounded-md text-center"
+              >
                 <h1>Upload image or drag and drop</h1>
+                <input
+                  type="file"
+                  accept="image/*"
+                  onChange={handleImageUpload}
+                  className="hidden"
+                  id="image-upload"
+                />
+                <label htmlFor="image-upload" className="cursor-pointer">
+                  <div className="text-xl mb-2">📷</div>
+                  {imageFile ? (
+                    <img
+                      src={URL.createObjectURL(imageFile)}
+                      alt="Preview"
+                      className="w-full p-2 object-cover"
+                    />
+                  ) : (
+                    <p className="text-sm"></p>
+                  )}
+                  {error && <p className="text-red-500">{error}</p>}
+                </label>
               </div>
               <div className="mb-4">
                 <h3>Description</h3>
@@ -230,7 +326,10 @@ export const Footer = () => {
                   className="border w-full py-4 outline-none rounded-md p-2"
                 />
               </div>
-              <button className="bg-pink-400 py-2 w-full mt-4 rounded-md">
+              <button
+                className="bg-pink-400 py-2 w-full mt-4 rounded-md"
+                onClick={handleSubmit}
+              >
                 Upload this image
               </button>
             </motion.div>

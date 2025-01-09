@@ -282,29 +282,6 @@ const Reels: React.FC = () => {
               ))}
             </div>
           ) : (
-            // <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-            //   {movies.map((movie) => (
-            //     <div
-            //       key={movie.id}
-            //       className="bg-white border rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200"
-            //     >
-            //       <img
-            //         src={movie.poster}
-            //         alt={movie.title}
-            //         className="w-full h-48 object-cover rounded-t-lg"
-            //       />
-            //       <div className="p-4">
-            //         <h3 className="text-lg font-semibold">{movie.title}</h3>
-            //         <p className="text-gray-500">{movie.duration}</p>
-            //         <div className="flex items-center gap-2 mt-2">
-            //           <img src={coin} alt="Coin" className="w-4 h-4" />
-            //           <span className="text-sm">{movie.coin}</span>
-            //         </div>
-            //       </div>
-            //     </div>
-            //   ))}
-            // </div>
-
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
               {movies.map((movie) => (
                 <div

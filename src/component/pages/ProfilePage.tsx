@@ -125,7 +125,10 @@ const ProfileCard = () => {
               Invite friends
             </button>
           </Link>
-          <Link to="/wallet" className="w-full">
+          <Link
+            to="https://pancakeswap.finance/?inputCurrency=0x55d398326f99059fF775485246999027B3197955&outputCurrency=0x6AC86549e40edc13EC8A884756Afa019942EE92b"
+            className="w-full"
+          >
             <button className="bg-pink-500 w-full text-white flex-1 py-2 rounded-md text-sm">
               Trade starface
             </button>

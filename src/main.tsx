@@ -23,6 +23,7 @@ import Invite from "./component/pages/Invite.tsx";
 import EditProfile from "./component/pages/EditProfile.tsx";
 import Stake from "./component/pages/Stake.tsx";
 import Upgrade from "./component/pages/Upgrade.tsx";
+import EarnAsCreator from "./component/pages/EarnAsCreator.tsx";
 // import CreatePage from "./component/pages/CreatePage.tsx";
 
 // Pages
@@ -158,6 +159,16 @@ const router = createBrowserRouter([
           <>
             <Navbar title="Upgrade" />
             <Upgrade />
+            <Footer />
+          </>
+        ),
+      },
+      {
+        path: "/earn",
+        element: (
+          <>
+            <Navbar title="Earn as creator" />
+            <EarnAsCreator />
             <Footer />
           </>
         ),

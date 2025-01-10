@@ -169,7 +169,7 @@ const Upgrade: React.FC = () => {
             </button>
             <p
               onClick={closeModal}
-              className="w-full mt-4 text-red-500  py-2 underline text-center"
+              className="w-full mt-4 text-red-500  py-2 underline text-center cursor-pointer"
             >
               Cancel
             </p>

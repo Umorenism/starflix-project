@@ -118,7 +118,7 @@ const ProfileCard = () => {
           <p className="text-gray-500 text-sm">johndoe@gmail.com</p>
           <h1 className="mt-2 text-gray-700 text-sm">
             Status | User{" "}
-            <a href="#" className="underline text-red-500">
+            <a href="/earn" className="underline text-red-500">
               Become A Creator
             </a>
           </h1>

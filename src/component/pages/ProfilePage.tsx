@@ -118,9 +118,9 @@ const ProfileCard = () => {
           <p className="text-gray-500 text-sm">johndoe@gmail.com</p>
           <h1 className="mt-2 text-gray-700 text-sm">
             Status | User{" "}
-            <a href="/earn" className="underline text-red-500">
+            <Link to="/earn" className="underline text-red-500">
               Become A Creator
-            </a>
+            </Link>
           </h1>
         </div>
         <div className="flex w-full mt-4 gap-2">

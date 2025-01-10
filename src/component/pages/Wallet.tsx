@@ -95,17 +95,6 @@ const Wallet = () => {
                 Link copied to clipboard!
               </span>
             )}
-            {/* <div
-              onClick={handleCopy}
-              className="bg-gray-100 shadow-md w-full py-4 mt-8 rounded-md flex justify-between items-center p-2"
-            >
-              <h1 className="text-start">
-                0xf8aaFd636f40Ec32A53a3980e3a5A5EF95b31d2E
-              </h1>
-              <div className="bg-pink-600 w-8 h-8 rounded-md flex justify-center items-center p-2">
-                <FaCopy size={30} />
-              </div>
-            </div> */}
 
             <div
               onClick={handleCopy}

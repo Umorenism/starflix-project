@@ -1,4 +1,4 @@
-import { FaArrowLeft, FaWallet } from "react-icons/fa";
+import { FaArrowLeft, FaCopy, FaWallet } from "react-icons/fa";
 import { PiHandTapLight } from "react-icons/pi";
 import { SiConvertio } from "react-icons/si";
 import { RiArrowLeftRightFill } from "react-icons/ri";
@@ -7,14 +7,20 @@ import { IoLogoStackoverflow } from "react-icons/io5";
 
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { QRCodeCanvas } from "qrcode.react";
+// import pic from "../../asset/images/coins/download (1).png";
+
 const Wallet = () => {
   const [activeTab, setActiveTab] = useState("Assets");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  const [copied, setCopied] = useState<boolean>(false);
+  const [referralLink] = useState<string>("https://example.com/referral/12345");
+
   const [selectedAction, setSelectedAction] = useState<string | null>(null);
 
   const navigate = useNavigate(); // Initialize useNavigate
-
+  const walletAddress = "0xf8aaFd636f40Ec32A53a3980e3a5A5EF95b31d2E";
   const user = true;
 
   const icondata = [
@@ -51,12 +57,18 @@ const Wallet = () => {
     setIsModalOpen(false);
   };
 
+  const handleCopy = () => {
+    navigator.clipboard.writeText(referralLink);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000); // Reset after 2 seconds
+  };
+
   const renderModalContent = () => {
     switch (selectedAction) {
       case "Fund Wallet":
         return (
           <div>
-            <div className="w-full mb-4 flex justify-between items-center">
+            <div className="w-full mb-10 flex justify-between items-center">
               <Link to="/wallet">
                 <FaArrowLeft className="" />
               </Link>
@@ -67,20 +79,43 @@ const Wallet = () => {
                 x
               </p>
             </div>
-            <h2 className="text-xl font-bold text-gray-800">
+            <h2 className="text-xl font-bold text-gray-800 text-center">
               FUND ACCOUNT WITH USDT
             </h2>
             <p className="text-gray-600 mt-2 text-center">
               Copy your USDT (BEP20) wallet address or scan the QRCode below.
             </p>
-            <input
-              type="number"
-              placeholder="Amount"
-              className="mt-4 border border-gray-300 rounded w-full p-2"
-            />
-            <button className="mt-4 bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700">
-              Fund Now
-            </button>
+
+            <div className="w-full justify-center items-center flex mt-4">
+              <QRCodeCanvas value={walletAddress} size={200} />
+            </div>
+
+            {copied && (
+              <span className="mt-4 text-sm text-green-600">
+                Link copied to clipboard!
+              </span>
+            )}
+            {/* <div
+              onClick={handleCopy}
+              className="bg-gray-100 shadow-md w-full py-4 mt-8 rounded-md flex justify-between items-center p-2"
+            >
+              <h1 className="text-start">
+                0xf8aaFd636f40Ec32A53a3980e3a5A5EF95b31d2E
+              </h1>
+              <div className="bg-pink-600 w-8 h-8 rounded-md flex justify-center items-center p-2">
+                <FaCopy size={30} />
+              </div>
+            </div> */}
+
+            <div
+              onClick={handleCopy}
+              className="bg-gray-100 shadow-md w-full py-4 mt-8 rounded-md flex justify-between items-center p-2 cursor-pointer"
+            >
+              <h1 className="text-start">{walletAddress}</h1>
+              <div className="bg-pink-600 w-8 h-8 rounded-md flex justify-center items-center p-2">
+                <FaCopy size={20} color="white" />
+              </div>
+            </div>
           </div>
         );
       case "Withdraw":

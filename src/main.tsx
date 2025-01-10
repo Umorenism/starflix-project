@@ -21,6 +21,7 @@ import TaskDetailPage from "./component/TaskDetailPage.tsx";
 import Wallet from "./component/pages/Wallet.tsx";
 import Invite from "./component/pages/Invite.tsx";
 import EditProfile from "./component/pages/EditProfile.tsx";
+import Stake from "./component/pages/Stake.tsx";
 // import CreatePage from "./component/pages/CreatePage.tsx";
 
 // Pages
@@ -137,6 +138,16 @@ const router = createBrowserRouter([
         element: (
           <>
             <ChatPage />
+          </>
+        ),
+      },
+      {
+        path: "/stake",
+        element: (
+          <>
+            <Navbar title="Stake" />
+            <Stake />
+            <Footer />
           </>
         ),
       },

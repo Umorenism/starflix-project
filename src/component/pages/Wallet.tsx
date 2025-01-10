@@ -5,17 +5,19 @@ import { RiArrowLeftRightFill } from "react-icons/ri";
 import { IoLogoStackoverflow } from "react-icons/io5";
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 const Wallet = () => {
   const [activeTab, setActiveTab] = useState("Assets");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+
   const [selectedAction, setSelectedAction] = useState<string | null>(null);
+
+  const navigate = useNavigate(); // Initialize useNavigate
 
   const icondata = [
     {
       title: "Fund Wallet",
       icon: <FaWallet />,
-      link: "/",
     },
     {
       title: "Withdraw",
@@ -32,6 +34,7 @@ const Wallet = () => {
     {
       title: "Staking",
       icon: <IoLogoStackoverflow />,
+      route: "/stake", // Define the route for Staking
     },
   ];
 
@@ -45,9 +48,6 @@ const Wallet = () => {
     setIsModalOpen(false);
   };
 
-  const handleToggleModal = () => {
-    setIsOpen(!isOpen);
-  };
   const renderModalContent = () => {
     switch (selectedAction) {
       case "Fund Wallet":
@@ -96,11 +96,7 @@ const Wallet = () => {
             <p className="text-gray-600 mt-2 text-center">
               Please ensure you input the right starface coin wallet address.
             </p>
-            {/* <select className="mt-4 border border-gray-300 rounded w-full p-2">
-              <option>Bank Account</option>
-              <option>PayPal</option>
-              <option>Crypto Wallet</option>
-            </select> */}
+
             <div className="flex flex-col w-full mb-4">
               <label htmlFor="">Amount</label>
               <input
@@ -154,11 +150,6 @@ const Wallet = () => {
                 className="border border-gray-300 py-4 rounded w-full p-2 mb-2"
               />
               <p>{}</p>
-              {/* <select className="border border-gray-300 rounded w-full p-2">
-                <option>USD</option>
-                <option>EUR</option>
-                <option>BTC</option>
-              </select> */}
             </div>
             <button className="mt-4 w-full bg-pink-600 text-white px-4 py-4 rounded hover:bg-pink-700">
               Convert
@@ -210,140 +201,7 @@ const Wallet = () => {
             </button>
           </div>
         );
-      case "Staking":
-        return (
-          <div>
-            <div className="w-full mb-4 flex justify-between items-center">
-              <FaArrowLeft className="" />
-              <p
-                onClick={closeModal}
-                className="text-xl justify-center flex items-center bg-gray-400 h-10 w-10 cursor-pointer rounded-full"
-              >
-                x
-              </p>
-            </div>
-            <h2 className="text-xl font-bold text-gray-800">Staking History</h2>
-            <p className="text-gray-600 mt-2">
-              Stake your balance to earn rewards.
-            </p>
-            <div className="bg-slate-400 w-full py-4 p-2 rounded-md">
-              <div className="w-full flex justify-between items-center">
-                <h1>#675d7155af24d827016ab953</h1>
-                <button>cancelled</button>
-              </div>
-              <div className="w-full flex justify-between items-center">
-                <h1>ROI: 0.8</h1>
-                <p>20 SFC</p>
-              </div>
-              <p>Start Date: Sat, December 14, 2024</p>
-              <p>Ended Date: Tue, December 24, 2024</p>
-            </div>
-            <button
-              className="mt-4 bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700"
-              onClick={handleToggleModal}
-            >
-              Stake Now
-            </button>
-            {/* Modal */}
-            {/* {isOpen && (
-              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 sm:hidden">
-                <div className="w-full mb-4 flex justify-between items-center">
-                  <FaArrowLeft className="" />
-                  <p
-                    onClick={handleToggleModal}
-                    className="text-xl justify-center flex items-center bg-gray-400 h-10 w-10 cursor-pointer rounded-full"
-                  >
-                    x
-                  </p>
-                </div>
-                <div className="bg-white w-11/12 max-w-sm p-4 rounded-lg shadow-lg">
-                  <h2 className="text-xl font-bold mb-4 text-center">STAKE</h2>
-                  <p className="text-gray-600 mb-4 text-center">
-                    Stake Your SFC, Grow Your Rewards!.
-                  </p>
-                  <button
-                    className="bg-pink-600 text-white px-4 py-2 rounded hover:bg-pink-700"
-                    onClick={handleToggleModal}
-                  >
-                    Close
-                  </button>
-                </div>
-              </div>
-            )} */}
 
-            {isOpen && (
-              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 sm:hidden">
-                {/* Header Section */}
-                <div className="absolute top-4 left-4 right-4 flex justify-between items-center">
-                  {/* Back Arrow Icon */}
-                  {/* <FaArrowLeft className="text-white text-2xl cursor-pointer" /> */}
-
-                  {/* Close Button */}
-                  {/* <p
-                    onClick={handleToggleModal}
-                    className="text-white text-lg flex items-center justify-center bg-gray-500 h-10 w-10 cursor-pointer rounded-full hover:bg-gray-600"
-                  >
-                    x
-                  </p> */}
-                </div>
-
-                {/* Modal Content */}
-                <div className="bg-white w-[95%] p-6 rounded-lg shadow-lg py-10">
-                  <div className="flex justify-between items-center w-full mb-10">
-                    <FaArrowLeft className="text-black text-2xl cursor-pointer" />
-                    <p
-                      onClick={handleToggleModal}
-                      className="text-white text-lg flex items-center justify-center bg-gray-500 h-10 w-10 cursor-pointer rounded-full hover:bg-gray-600"
-                    >
-                      x
-                    </p>
-                  </div>
-                  <h2 className="text-2xl font-bold mb-4 text-center text-gray-800">
-                    STAKE
-                  </h2>
-                  <p className="text-gray-600 mb-6 text-center">
-                    Stake Your SFC, Grow Your Rewards!
-                  </p>
-
-                  <div>
-                    <form action="" className="w-full">
-                      <div className="flex flex-col w-full mb-4">
-                        <label htmlFor="">Amount</label>
-                        <input
-                          type="text"
-                          className="py-4 border outline-none rounded-md p-2"
-                        />
-                      </div>
-                      <p className="text-red-600 mt-4">
-                        This field is required
-                      </p>
-                      <p>SFC Balance: 1516.923526231877</p>
-                      <div className="flex flex-col w-full mb-4">
-                        <label htmlFor="">Select plans</label>
-                        <select
-                          name=""
-                          id=""
-                          className="w-full py-4 border outline-none rounded-md"
-                        >
-                          <option value="">--select plan--</option>
-                          <option value="">10 Days</option>
-                          <option value="">30 Days</option>
-                          <option value="">3 Month</option>
-                        </select>
-                      </div>
-                    </form>
-                  </div>
-                  <button
-                    className="bg-pink-600 text-white px-6 py-3 rounded-lg w-full hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-offset-2 mt-4"
-                    onClick={handleToggleModal}
-                  >
-                    Stake
-                  </button>
-                </div>
-              </div>
-            )}
-          </div>
-        );
       default:
         return <p>Invalid Action</p>;
     }
@@ -371,7 +229,11 @@ const Wallet = () => {
       <div className="mt-6 grid grid-cols-5 gap-4 w-full">
         {icondata.map((icon, id) => (
           <div
-            onClick={() => openModal(icon.title)}
+            // onClick={() => openModal(icon.title)}
+
+            onClick={() =>
+              icon.route ? navigate(icon.route) : openModal(icon.title)
+            } // Navigate to route if defined, else open modal
             key={id}
             className="flex flex-col items-center justify-center mt-4 "
           >

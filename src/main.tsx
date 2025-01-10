@@ -22,6 +22,7 @@ import Wallet from "./component/pages/Wallet.tsx";
 import Invite from "./component/pages/Invite.tsx";
 import EditProfile from "./component/pages/EditProfile.tsx";
 import Stake from "./component/pages/Stake.tsx";
+import Upgrade from "./component/pages/Upgrade.tsx";
 // import CreatePage from "./component/pages/CreatePage.tsx";
 
 // Pages
@@ -147,6 +148,16 @@ const router = createBrowserRouter([
           <>
             <Navbar title="Stake" />
             <Stake />
+            <Footer />
+          </>
+        ),
+      },
+      {
+        path: "/upgrade",
+        element: (
+          <>
+            <Navbar title="Upgrade" />
+            <Upgrade />
             <Footer />
           </>
         ),

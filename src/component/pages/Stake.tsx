@@ -12,10 +12,7 @@ const Stake = () => {
     <div className="p-4">
       <div className="w-full mb-4 flex justify-between items-center">
         <FaArrowLeft className="" />
-        <p
-          //   onClick={closeModal}
-          className="text-xl justify-center flex items-center bg-gray-400 h-10 w-10 cursor-pointer rounded-full"
-        >
+        <p className="text-xl justify-center flex items-center bg-gray-400 h-10 w-10 cursor-pointer rounded-full">
           x
         </p>
       </div>

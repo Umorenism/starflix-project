@@ -2,10 +2,11 @@ import { FaArrowLeft, FaWallet } from "react-icons/fa";
 import { PiHandTapLight } from "react-icons/pi";
 import { SiConvertio } from "react-icons/si";
 import { RiArrowLeftRightFill } from "react-icons/ri";
+import { ImFire } from "react-icons/im";
 import { IoLogoStackoverflow } from "react-icons/io5";
 
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Wallet = () => {
   const [activeTab, setActiveTab] = useState("Assets");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -13,6 +14,8 @@ const Wallet = () => {
   const [selectedAction, setSelectedAction] = useState<string | null>(null);
 
   const navigate = useNavigate(); // Initialize useNavigate
+
+  const user = true;
 
   const icondata = [
     {
@@ -217,13 +220,30 @@ const Wallet = () => {
         </div>
       )}
       {/* Balance Section */}
-      <div className="mt-16 bg-white shadow-md w-full py-6 rounded-lg p-4 text-start">
-        <p className="text-pink-600 font-medium">Star Balance</p>
-        <h1 className="text-3xl font-bold mt-2 text-gray-800">
-          1516.589067427284
-        </h1>
-        <h3 className="text-gray-500 text-sm mt-1">$151.66</h3>
-      </div>
+      {user ? (
+        <div className="mt-16 bg-white shadow-md w-full py-6 rounded-lg p-4 text-start">
+          <div className="flex justify-between items-center w-full">
+            <div>
+              <p className="text-pink-600 font-medium">Star Balance</p>
+              <h1 className="text-3xl font-bold mt-2 text-gray-800">1000</h1>
+              <h3 className="text-gray-500 text-sm mt-1">$0000</h3>
+            </div>
+            <Link to="/upgrade">
+              <button className="px-4 py-2 bg-pink-600 text-white font-bold rounded-full animate-pulse flex">
+                <ImFire /> Upgrade
+              </button>
+            </Link>
+          </div>
+        </div>
+      ) : (
+        <div className="mt-16 bg-white shadow-md w-full py-6 rounded-lg p-4 text-start">
+          <p className="text-pink-600 font-medium">Star Balance</p>
+          <h1 className="text-3xl font-bold mt-2 text-gray-800">
+            1516.589067427284
+          </h1>
+          <h3 className="text-gray-500 text-sm mt-1">$151.66</h3>
+        </div>
+      )}
 
       {/* Icons Section */}
       <div className="mt-6 grid grid-cols-5 gap-4 w-full">

@@ -1,4 +1,3 @@
-// main.tsx
 import ReactDOM from "react-dom/client";
 import { App } from "./App.tsx";
 import "./index.css";
@@ -6,12 +5,10 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext.tsx";
 import FeedPage from "./component/pages/FeedPage.tsx";
 import MarketPlace from "./component/pages/MarketPlace.tsx";
-// import CreatePage from "./component/pages/CreatePage.tsx";
 import Navbar from "./component/Header/Navbar.tsx";
 import { Footer } from "./component/footer/Footer.tsx";
 import ChatPage from "./component/pages/ChatPage.tsx";
 import Login from "./auth/Login.tsx";
-
 import ProfileCard from "./component/pages/ProfilePage.tsx";
 import ChatBox from "./component/pages/chatBox.tsx";
 import Signup from "./auth/Signup.tsx";
@@ -24,10 +21,7 @@ import EditProfile from "./component/pages/EditProfile.tsx";
 import Stake from "./component/pages/Stake.tsx";
 import Upgrade from "./component/pages/Upgrade.tsx";
 import EarnAsCreator from "./component/pages/EarnAsCreator.tsx";
-// import CreatePage from "./component/pages/CreatePage.tsx";
-
-// Pages
-
+import pic from "../src/asset/loggg.png";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -37,7 +31,7 @@ const router = createBrowserRouter([
         path: "/",
         element: (
           <>
-            <Navbar title="Feeds" />
+            <Navbar title="" logo={pic} backRoute="" />
             <FeedPage />
             <Footer />
           </>
@@ -45,51 +39,35 @@ const router = createBrowserRouter([
       },
       {
         path: "/login",
-        element: (
-          <>
-            <Login />
-          </>
-        ),
+        element: <Login />,
       },
       {
         path: "/signup",
-        element: (
-          <>
-            <Signup />
-          </>
-        ),
+        element: <Signup />,
       },
       {
         path: "/performtasks",
-        element: (
-          <>
-            <PerformedTasks />
-          </>
-        ),
+        element: <PerformedTasks />,
       },
       {
         path: "/taskdetail",
         element: (
           <>
-            <Navbar title="Task Details" />
-            <TaskDetailPage tasktitle={""} />
+            <Navbar logo="" title="Task Details" backRoute="/performtasks" />
+            <TaskDetailPage tasktitle="" />
             <Footer />
           </>
         ),
       },
       {
         path: "/otp",
-        element: (
-          <>
-            <OtpVerify />
-          </>
-        ),
+        element: <OtpVerify />,
       },
       {
         path: "/chatbox",
         element: (
           <>
-            <Navbar title="Chat" />
+            <Navbar logo="" title="Chat" backRoute="/chat" />
             <ChatBox />
             <Footer />
           </>
@@ -99,7 +77,7 @@ const router = createBrowserRouter([
         path: "/marketplace",
         element: (
           <>
-            <Navbar title="Market place" />
+            <Navbar logo="" title="Market Place" backRoute="/" />
             <MarketPlace />
             <Footer />
           </>
@@ -109,7 +87,7 @@ const router = createBrowserRouter([
         path: "/wallet",
         element: (
           <>
-            <Navbar title="Wellet" />
+            <Navbar logo="" title="Wallet" backRoute="/" />
             <Wallet />
             <Footer />
           </>
@@ -119,7 +97,7 @@ const router = createBrowserRouter([
         path: "/invite",
         element: (
           <>
-            <Navbar title="Invite" />
+            <Navbar logo="" title="Invite" backRoute="/" />
             <Invite />
             <Footer />
           </>
@@ -129,7 +107,7 @@ const router = createBrowserRouter([
         path: "/editprofile",
         element: (
           <>
-            <Navbar title="Edit profile" />
+            <Navbar logo="" title="Edit Profile" backRoute="/profile" />
             <EditProfile />
             <Footer />
           </>
@@ -137,17 +115,13 @@ const router = createBrowserRouter([
       },
       {
         path: "/chat",
-        element: (
-          <>
-            <ChatPage />
-          </>
-        ),
+        element: <ChatPage />,
       },
       {
         path: "/stake",
         element: (
           <>
-            <Navbar title="Stake" />
+            <Navbar logo="" title="Stake" backRoute="/" />
             <Stake />
             <Footer />
           </>
@@ -157,7 +131,7 @@ const router = createBrowserRouter([
         path: "/upgrade",
         element: (
           <>
-            <Navbar title="Upgrade" />
+            <Navbar logo="" title="Upgrade" backRoute="/wallet" />
             <Upgrade />
             <Footer />
           </>
@@ -167,7 +141,7 @@ const router = createBrowserRouter([
         path: "/earn",
         element: (
           <>
-            <Navbar title="Earn as creator" />
+            <Navbar logo="" title="Earn as Creator" backRoute="/" />
             <EarnAsCreator />
             <Footer />
           </>
@@ -177,7 +151,7 @@ const router = createBrowserRouter([
         path: "/profile",
         element: (
           <>
-            <Navbar title="Profile" />
+            <Navbar logo="" title="Profile" backRoute="/" />
             <ProfileCard />
             <Footer />
           </>

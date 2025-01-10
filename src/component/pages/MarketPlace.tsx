@@ -232,13 +232,7 @@ function MarketPlace() {
   }, []);
 
   if (selectedTask) {
-    return (
-      <TaskDetailPage
-        tasktitle={selectedTask.adType}
-        // taskDescription={selectedTask.description}
-        // taskReward={selectedTask.earningPerAction}
-      />
-    );
+    return <TaskDetailPage tasktitle={selectedTask.adType} />;
   }
 
   return (

@@ -57,7 +57,9 @@ const Wallet = () => {
         return (
           <div>
             <div className="w-full mb-4 flex justify-between items-center">
-              <FaArrowLeft className="" />
+              <Link to="/wallet">
+                <FaArrowLeft className="" />
+              </Link>
               <p
                 onClick={closeModal}
                 className="text-xl justify-center flex items-center bg-gray-400 h-10 w-10 cursor-pointer rounded-full"
@@ -85,7 +87,9 @@ const Wallet = () => {
         return (
           <div>
             <div className="w-full mb-4 flex justify-between items-center">
-              <FaArrowLeft className="" />
+              <Link to="/wallet">
+                <FaArrowLeft className="" />
+              </Link>
               <p
                 onClick={closeModal}
                 className="text-xl justify-center flex items-center bg-gray-400 h-10 w-10 cursor-pointer rounded-full"
@@ -131,7 +135,9 @@ const Wallet = () => {
         return (
           <div>
             <div className="w-full mb-4 flex justify-between items-center">
-              <FaArrowLeft className="" />
+              <Link to="/wallet">
+                <FaArrowLeft className="" />
+              </Link>
               <p
                 onClick={closeModal}
                 className="text-xl justify-center flex items-center bg-gray-400 h-10 w-10 cursor-pointer rounded-full"
@@ -163,7 +169,9 @@ const Wallet = () => {
         return (
           <div>
             <div className="w-full mb-4 flex justify-between items-center">
-              <FaArrowLeft className="" />
+              <Link to="/wallet">
+                <FaArrowLeft className="" />
+              </Link>
               <p
                 onClick={closeModal}
                 className="text-xl justify-center flex items-center bg-gray-400 h-10 w-10 cursor-pointer rounded-full"

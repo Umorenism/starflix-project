@@ -22,6 +22,9 @@ import Stake from "./component/pages/Stake.tsx";
 import Upgrade from "./component/pages/Upgrade.tsx";
 import EarnAsCreator from "./component/pages/EarnAsCreator.tsx";
 import pic from "../src/asset/loggg.png";
+import SetPassword from "./auth/SetPassword.tsx";
+import UserProfile from "./auth/UserProfile.tsx";
+import ProfilePhotoUpload from "./auth/ProfileUploadImage.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -42,8 +45,20 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
+        path: "/confirm",
+        element: <SetPassword />,
+      },
+      {
+        path: "/userprofile",
+        element: <UserProfile />,
+      },
+      {
         path: "/signup",
         element: <Signup />,
+      },
+      {
+        path: "/uploadimage",
+        element: <ProfilePhotoUpload />,
       },
       {
         path: "/performtasks",

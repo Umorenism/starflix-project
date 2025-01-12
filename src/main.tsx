@@ -25,6 +25,7 @@ import pic from "../src/asset/loggg.png";
 import SetPassword from "./auth/SetPassword.tsx";
 import UserProfile from "./auth/UserProfile.tsx";
 import ProfilePhotoUpload from "./auth/ProfileUploadImage.tsx";
+import ProtectedRoute from "./component/PropectedRoute.tsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -92,9 +93,11 @@ const router = createBrowserRouter([
         path: "/marketplace",
         element: (
           <>
-            <Navbar logo="" title="Market Place" backRoute="/" />
-            <MarketPlace />
-            <Footer />
+            <ProtectedRoute>
+              <Navbar logo="" title="Market Place" backRoute="/" />
+              <MarketPlace />
+              <Footer />
+            </ProtectedRoute>
           </>
         ),
       },
@@ -166,9 +169,11 @@ const router = createBrowserRouter([
         path: "/profile",
         element: (
           <>
-            <Navbar logo="" title="Profile" backRoute="/" />
-            <ProfileCard />
-            <Footer />
+            <ProtectedRoute>
+              <Navbar logo="" title="Profile" backRoute="/" />
+              <ProfileCard />
+              <Footer />
+            </ProtectedRoute>
           </>
         ),
       },

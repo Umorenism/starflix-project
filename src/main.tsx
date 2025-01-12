@@ -2,14 +2,14 @@ import ReactDOM from "react-dom/client";
 import { App } from "./App.tsx";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { AuthProvider } from "./context/AuthContext.tsx";
+
 import FeedPage from "./component/pages/FeedPage.tsx";
 import MarketPlace from "./component/pages/MarketPlace.tsx";
 import Navbar from "./component/Header/Navbar.tsx";
 import { Footer } from "./component/footer/Footer.tsx";
 import ChatPage from "./component/pages/ChatPage.tsx";
 import Login from "./auth/Login.tsx";
-import ProfileCard from "./component/pages/ProfilePage.tsx";
+import ProfileCard from "./component/pages/ProfileCard.tsx";
 import ChatBox from "./component/pages/chatBox.tsx";
 import Signup from "./auth/Signup.tsx";
 import OtpVerify from "./auth/Otp.tsx";
@@ -25,7 +25,9 @@ import pic from "../src/asset/loggg.png";
 import SetPassword from "./auth/SetPassword.tsx";
 import UserProfile from "./auth/UserProfile.tsx";
 import ProfilePhotoUpload from "./auth/ProfileUploadImage.tsx";
-import ProtectedRoute from "./component/PropectedRoute.tsx";
+import ProtectedRoute from "./context/PropectedRoute.tsx";
+import { AuthProvider } from "./context/AuthContext.tsx";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -125,7 +127,7 @@ const router = createBrowserRouter([
         path: "/editprofile",
         element: (
           <>
-            <Navbar logo="" title="Edit Profile" backRoute="/profile" />
+            <Navbar logo="" title="Edit Profile" backRoute="/" />
             <EditProfile />
             <Footer />
           </>
@@ -134,6 +136,20 @@ const router = createBrowserRouter([
       {
         path: "/chat",
         element: <ChatPage />,
+      },
+      {
+        path: "/chatbox",
+        element: <ChatBox />,
+      },
+      {
+        path: "/profilecard",
+        element: (
+          <>
+            <Navbar title="profile information" logo="" backRoute="/" />
+            <ProfileCard />
+            <Footer />
+          </>
+        ),
       },
       {
         path: "/stake",
@@ -169,11 +185,11 @@ const router = createBrowserRouter([
         path: "/profile",
         element: (
           <>
-            <ProtectedRoute>
-              <Navbar logo="" title="Profile" backRoute="/" />
-              <ProfileCard />
-              <Footer />
-            </ProtectedRoute>
+            {/* <ProtectedRoute> */}
+            <Navbar logo="" title="Profile" backRoute="/" />
+            <ProfileCard />
+            <Footer />
+            {/* </ProtectedRoute> */}
           </>
         ),
       },

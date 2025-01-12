@@ -22,6 +22,7 @@ const footerItems = [
   {
     title: "Create",
     icon: <MdOutlineCreateNewFolder />,
+    style: "ml-4",
   },
   {
     title: "Chat",
@@ -114,17 +115,17 @@ export const Footer = () => {
       <div className="py-2 bg-slate-300 fixed bottom-0 left-0 right-0 z-10 border-t-4 rounded-md">
         <div className="flex justify-between items-center px-6 gap-4">
           {footerItems.map((item, index) => (
-            <div key={index} className="text-white flex flex-col items-center">
+            <div key={index} className="text-white flex flex-col">
               <Link
                 to={item.path || "#"}
                 onClick={
                   item.title === "Create" ? handleModalToggle : undefined
                 }
               >
-                <div className="text-xl hover:text-pink-600 mb-1 text-slate-700">
+                <div className="text-xl w-full text-center hover:text-pink-600 mb-1 text-slate-700">
                   {item.icon}
                 </div>
-                <p className="text-sm hover:text-pink-600 text-black">
+                <p className="text-sm w-full text-center hover:text-pink-600 text-black">
                   {item.title}
                 </p>
               </Link>

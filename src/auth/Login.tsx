@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import pics from "../asset/loggg.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import api from "../apiEndPoint/apiService";
 
 const Login = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -9,6 +11,8 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [isValid, setIsValid] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
@@ -40,21 +44,22 @@ const Login = () => {
     if (!isValid) return;
 
     try {
-      const response = await fetch("https://starfaceapi.site/api/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
+      const response = await api.post("/signin", {
+        email,
+        password,
       });
 
-      if (!response.ok) {
+      if (response.data && response.data.token) {
+        localStorage.setItem("auth_token", response.data.token);
+        console.log("Login successful:", response);
+        // alert("Login successful!");
+        // navigate("/");
+        const redirectRoute = location.state?.from?.pathname || "/";
+        navigate(redirectRoute, { replace: true });
+        console.log(navigate);
+      } else {
         throw new Error("Invalid credentials");
       }
-
-      const data = await response.json();
-      console.log("Login successful:", data);
-      alert("Login successful!");
     } catch (err: any) {
       setError(err.message || "Something went wrong");
     }

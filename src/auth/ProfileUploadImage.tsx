@@ -46,7 +46,7 @@ const ProfileUploadImage = () => {
             <img
               src={uploadedImage}
               alt="Uploaded Preview"
-              className="mt-4 w-24 h-24 rounded-full object-cover"
+              className="mt-4 w-28 h-28 rounded-full object-cover"
             />
           ) : (
             <p className="mt-2">
